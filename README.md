@@ -12,5 +12,5 @@ aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 4. Replace `URL_HERE` in `user_data.sh` with needed URL - https://example.com
 ```
 terraform init
-terraform apply -f ireland.tfvars
+terraform apply -var-file ireland.tfvars
 ```
