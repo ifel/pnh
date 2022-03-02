@@ -9,4 +9,4 @@ chmod u+x ./plow
 #sudo yum install docker -y
 #sudo service docker start
 #sudo docker run -i --rm alpine/bombardier -c 750 -d 600s -l URL_HERE >> /home/ec2-user/log.txt 
-#sudo shutdown now
+sudo shutdown now
