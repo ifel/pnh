@@ -23,10 +23,27 @@ data "aws_subnets" "default" {
   }
 }
 
+data "aws_ami" "amazon_linux2" {
+  most_recent = true
+  owners      = ["137112412989"] #Amazon
+  filter {
+    name      = "name"
+    values    = [
+      "amzn2-ami-hvm-*-x86_64-ebs"
+    ]
+  }
+  filter {
+    name      = "owner-alias"
+    values    = [
+      "amazon",
+    ]
+  }
+}
+
 
 resource "aws_launch_template" "on_demand" {
   name = var.lc_name
-  image_id = var.ami_id
+  image_id = data.aws_ami.amazon_linux2.id
   instance_initiated_shutdown_behavior = "terminate" 
   instance_type = "t2.micro"
   iam_instance_profile {

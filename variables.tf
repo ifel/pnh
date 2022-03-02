@@ -4,10 +4,10 @@ variable "region" {
   description = "AWS Region"
 }
 
-variable "ami_id" {
-  type        = string
-  description = "AWS AMI"
-}
+# variable "ami_id" {
+#   type        = string
+#   description = "AWS AMI"
+# }
 
 variable "profile" {
   type        = string
