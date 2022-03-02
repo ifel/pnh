@@ -49,7 +49,7 @@ resource "aws_launch_template" "on_demand" {
   iam_instance_profile {
     arn = aws_iam_instance_profile.profile.arn
   }
-  user_data = filebase64("user_data.sh")
+  user_data = filebase64("user_data_ddoser.sh")
   tag_specifications {
     resource_type = "instance"
     tags = {
