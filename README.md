@@ -1,7 +1,7 @@
 # pnh
 
 1. Setup AWS ACC
-2. Put credentials to ~/.aws/credentials
+2. Put credentials to `~/.aws/credentials`
 ```
 [user1]
 aws_access_key_id=AKIAI44QH8DHBEXAMPLE
