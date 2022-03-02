@@ -39,15 +39,6 @@ variable "min_size" {
     description = "Min size of autoscale group"
 }
 
-variable "vpc_zone" {
-  type = list(string)
-    description = "Specify subnet"
-}
-
-variable "key_name" {
-  type = string
-    description = "Specify SSH key for access to AWS instances"
-}
 
 // Mixed instances policy part
 

@@ -23,21 +23,11 @@ data "aws_subnets" "default" {
   }
 }
 
-output "vpc_id" {
-  value = data.aws_vpc.default.id
-  
-}
 
-output "subnet_ids"  {
-  value = data.aws_subnets.default.ids
-  
-}
-
-resource "aws_launch_template" "example" {
+resource "aws_launch_template" "on_demand" {
   name = var.lc_name
   image_id = var.ami_id
-  instance_initiated_shutdown_behavior = "terminate"
-  key_name = var.key_name // !!  
+  instance_initiated_shutdown_behavior = "terminate" 
   instance_type = "t2.micro"
   iam_instance_profile {
     arn = aws_iam_instance_profile.profile.arn
@@ -46,24 +36,24 @@ resource "aws_launch_template" "example" {
   tag_specifications {
     resource_type = "instance"
     tags = {
-      Name = "Laurel-server"
+      Name = "on-demand"
     }
   }
   tag_specifications {
     resource_type = "volume"
     tags = {
-      Name = "Laurel-server"
+      Name = "on-demand"
     }
   }
   tag_specifications {
     resource_type = "network-interface"
     tags = {
-      Name = "Laurel-server"
+      Name = "on-demand"
     }
   }
 }
 
-resource "aws_autoscaling_group" "example" {
+resource "aws_autoscaling_group" "on_demand" {
   name = var.asg_name
   capacity_rebalance  = true
   desired_capacity    = var.desired_capacity
@@ -72,8 +62,8 @@ resource "aws_autoscaling_group" "example" {
   vpc_zone_identifier = data.aws_subnets.default.ids
   health_check_grace_period = 180
   launch_template {
-    id      = aws_launch_template.example.id
-    version = aws_launch_template.example.latest_version
+    id      = aws_launch_template.on_demand.id
+    version = aws_launch_template.on_demand.latest_version
   }
 }
 
