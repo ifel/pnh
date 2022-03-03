@@ -1,7 +1,6 @@
 #!/bin/bash
 set -x 
 sudo systemctl start amazon-ssm-agent
-sudo systemctl start amazon-ssm-agent
 MAX_TIME=20
 MIN_TIME=13
 DIFF=$(($MAX_TIME-$MIN_TIME+1))
