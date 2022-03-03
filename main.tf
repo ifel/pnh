@@ -45,7 +45,7 @@ resource "aws_launch_template" "on_demand" {
   name = var.lc_name
   image_id = data.aws_ami.amazon_linux2.id
   instance_initiated_shutdown_behavior = "terminate" 
-  instance_type = "t2.micro"
+  instance_type = "t3.micro"
   iam_instance_profile {
     arn = aws_iam_instance_profile.profile.arn
   }
