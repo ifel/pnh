@@ -16,7 +16,7 @@ aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 git clone https://github.com/nomatterz/pnh
 cd pnh
 ```
-5. Specify your profile (`user1`) to terraform `profile` variable in `ireland.tfvars` - this variable file has region set `eu-west-1` - that's Ireland
+5. Specify your profile (`user1`) to terraform `profile` variable in `ireland.tfvars` - this variable file has region set `eu-west-1` - that's Ireland.  
 or create your own `*.tfvars` file 
 6. Adjust ddoser launch cmd if needed in `user_data_ddoser.sh`
 7. `desired_capacity` variable in `ireland.tfvars` or in any other var file ( `myfile.tfvars` for example)  - how many instances to launch
