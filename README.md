@@ -19,8 +19,8 @@ aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 git clone https://github.com/nomatterz/pnh
 cd pnh
 ```
-5. There are default variables values (`variables.tf` file and listed below in README.md).  
-Also you can provide your own values and override defaults - file with custom variables shoud have extenstion `*.tfvars` 
+5. There are default variables values (`variables.tf` file and also they are listed below here, in `README.md`).  
+Also you can provide your own values and override defaults - file with custom variables shoud have extenstion `*.tfvars`   
 Repo contains sample variable file - `ireland.tfvars`.   
 Specify your profile (`user1`) to terraform `profile` variable either by overridding value in `ireland.tfvars` or in your custom variable file.
 6. Adjust ddoser launch cmd if needed in `user_data_ddoser.sh`
