@@ -4,46 +4,61 @@ variable "region" {
   description = "AWS Region"
 }
 
-# variable "ami_id" {
-#   type        = string
-#   description = "AWS AMI"
-# }
 
 variable "profile" {
   type        = string
-  description = "set profile"
+  description = "Profile for AWS credentials"
 }
-
-variable "asg_name" {
-  type        = string
-  description = "Auto Scaling Group name"
-}
-
-variable "lc_name" {
-  type        = string
-  description = "Launch configuration name"
-}
-
-# variable "security_groups" {
-#     type = list(string)
-#     description = "Specify security group list"
-# }
 
 variable "max_size" {
-  type = number
-    description = "Max size of autoscale group"
+  type        = number
+  description = "Max size for autoscaling groups. Both on-demand and spot."
+  default     = 32
 }
 
 variable "min_size" {
-  type = number
-    description = "Min size of autoscale group"
+  type        = number
+  description = "Min size for autoscale groups. Both on-demand and spot"
+  default     = 0
 }
 
 
-// Mixed instances policy part
 
-variable "desired_capacity" {
-    type = number
-    description = ""
-  
+variable "on_demand_desired_capacity" {
+  type        = number
+  description = "number of on-demand instances to launch"
+  default = 2
+
+}
+
+variable "on_demand_instance_type" {
+  type        = string
+  description = "on-demand instance type to use"
+  default     = "t3.micro"
+
+}
+
+variable "spot_desired_capacity" {
+  type        = number
+  description = "number of spot instances to launch"
+  default = 2
+
+}
+
+variable "spot_instance_types" {
+  description = "list of spot instance types to launch. defaults to empty"
+  type        = list(string)
+  default     = []
+}
+
+variable "spot_max_price" {
+  description = "max price for spot instances. same for all the types"
+  type        = string
+  default     = "0.004"
+}
+
+variable "user_data_filename" {
+  description = "name of file that will be used as ec2 userdata script"
+  type        = string
+  default     = "user_data_ddoser.sh"
 }
