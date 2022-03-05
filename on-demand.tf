@@ -12,4 +12,10 @@ resource "aws_autoscaling_group" "on_demand" {
     id      = aws_launch_template.base.id
     version = aws_launch_template.base.latest_version
   }
+
+  tag {
+      key = "Name"
+      value = "on-demand"
+      propagate_at_launch = true
+  }
 }
