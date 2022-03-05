@@ -1,5 +1,4 @@
-# pnh
-
+# Steps
 1. Setup AWS ACC
 2. Create IAM user with Administrator privileges
 <img width="1746" alt="image" src="https://user-images.githubusercontent.com/48525503/156642487-c95b4cb2-b943-4519-9aa7-d74b06297671.png">
@@ -35,6 +34,13 @@ terraform apply -var-file myfile.tfvars
 terraform destroy -var-file myfile.tfvars
 ```
 ---
+# How to increase available Spot instances number to launch 
+for new accounts you should request 32-64 vCPU
+![image](https://user-images.githubusercontent.com/48525503/156899393-523dd4f7-5706-454a-a01a-3b5bf7047488.png)
+![image](https://user-images.githubusercontent.com/48525503/156899400-466c27c7-fbf8-402e-8d07-b8497fe8b09f.png)
+![image](https://user-images.githubusercontent.com/48525503/156899417-cbf9d715-b39f-41b1-b7e9-9a91dd9fbf61.png)
+
+# Terraforms docs
 <!-- BEGIN_TF_DOCS -->
 ## Requirements
 
