@@ -19,11 +19,12 @@ aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 git clone https://github.com/nomatterz/pnh
 cd pnh
 ```
-5. Specify your profile (`user1`) to terraform `profile` variable in `ireland.tfvars` - this variable file has region set `eu-west-1` - that's Ireland.  
-or create your own `*.tfvars` file 
+5. There are default variables values (`variables.tf` file and listed below in README.md).  
+Also you can provide your own values and override defaults - file with custom variables shoud have extenstion `*.tfvars` 
+Repo contains sample variable file - `ireland.tfvars`.   
+Specify your profile (`user1`) to terraform `profile` variable either by overridding value in `ireland.tfvars` or in your custom variable file.
 6. Adjust ddoser launch cmd if needed in `user_data_ddoser.sh`
-7. `desired_capacity` variable in `ireland.tfvars` or in any other var file ( `myfile.tfvars` for example)  - how many instances to launch
-8. Run
+7. Run
 ```
 terraform init
 terraform apply -var-file myfile.tfvars 
@@ -33,3 +34,54 @@ terraform apply -var-file myfile.tfvars
 ```
 terraform destroy -var-file myfile.tfvars
 ```
+---
+<!-- BEGIN_TF_DOCS -->
+## Requirements
+
+| Name | Version |
+|------|---------|
+| <a name="requirement_aws"></a> [aws](#requirement\_aws) | ~> 3.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| <a name="provider_aws"></a> [aws](#provider\_aws) | ~> 3.0 |
+
+## Modules
+
+No modules.
+
+## Resources
+
+| Name | Type |
+|------|------|
+| [aws_autoscaling_group.on_demand](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
+| [aws_autoscaling_group.spot](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
+| [aws_iam_instance_profile.profile](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_instance_profile) | resource |
+| [aws_iam_policy_attachment.attach](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_policy_attachment) | resource |
+| [aws_iam_role.instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role) | resource |
+| [aws_launch_template.base](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
+| [aws_ami.amazon_linux2](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ami) | data source |
+| [aws_subnets.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
+| [aws_vpc.default](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_max_size"></a> [max\_size](#input\_max\_size) | Max size of autoscale group | `number` | `32` | no |
+| <a name="input_min_size"></a> [min\_size](#input\_min\_size) | Min size of autoscale group | `number` | `0` | no |
+| <a name="input_on_demand_desired_capacity"></a> [on\_demand\_desired\_capacity](#input\_on\_demand\_desired\_capacity) | number of on demand instances to launch | `number` | n/a | yes |
+| <a name="input_on_demand_instance_type"></a> [on\_demand\_instance\_type](#input\_on\_demand\_instance\_type) | on demand instance type to use | `string` | `"t3.micro"` | no |
+| <a name="input_profile"></a> [profile](#input\_profile) | set profile | `string` | n/a | yes |
+| <a name="input_region"></a> [region](#input\_region) | AWS Region | `string` | n/a | yes |
+| <a name="input_spot_desired_capacity"></a> [spot\_desired\_capacity](#input\_spot\_desired\_capacity) | number of spot instances to launch | `number` | n/a | yes |
+| <a name="input_spot_instance_types"></a> [spot\_instance\_types](#input\_spot\_instance\_types) | list of spot instance types to launch. default to empty | `list(string)` | `[]` | no |
+| <a name="input_spot_max_price"></a> [spot\_max\_price](#input\_spot\_max\_price) | max price for spot instances. same for all the types | `string` | `"0.004"` | no |
+| <a name="input_user_data_filename"></a> [user\_data\_filename](#input\_user\_data\_filename) | name of file that will be used as ec2 userdata script | `string` | `"user_data_ddoser.sh"` | no |
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
