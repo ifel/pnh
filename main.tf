@@ -1,88 +1,38 @@
-terraform {
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 3.0"
-    }
-  }
-}
-
 provider "aws" {
-  region = var.region
+  region  = var.region
   profile = var.profile
 }
 
-data "aws_vpc" "default" {
-  default = true
-}
-
-data "aws_subnets" "default" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
-  }
-}
-
-data "aws_ami" "amazon_linux2" {
-  most_recent = true
-  owners      = ["137112412989"] #Amazon
-  filter {
-    name      = "name"
-    values    = [
-      "amzn2-ami-hvm-*-x86_64-ebs"
-    ]
-  }
-  filter {
-    name      = "owner-alias"
-    values    = [
-      "amazon",
-    ]
-  }
-}
-
-
-resource "aws_launch_template" "on_demand" {
-  name = var.lc_name
-  image_id = data.aws_ami.amazon_linux2.id
-  instance_initiated_shutdown_behavior = "terminate" 
-  instance_type = "t3.micro"
+resource "aws_launch_template" "base" {
+  name                                 = "base"
+  image_id                             = data.aws_ami.amazon_linux2.id
+  instance_initiated_shutdown_behavior = "terminate"
+  instance_type                        = var.on_demand_instance_type
   iam_instance_profile {
     arn = aws_iam_instance_profile.profile.arn
   }
-  user_data = filebase64("user_data_ddoser.sh")
+  user_data = filebase64(var.user_data_filename)
   tag_specifications {
     resource_type = "instance"
     tags = {
-      Name = "on-demand"
+      Name = "base"
     }
   }
   tag_specifications {
     resource_type = "volume"
     tags = {
-      Name = "on-demand"
+      Name = "base"
     }
   }
   tag_specifications {
     resource_type = "network-interface"
     tags = {
-      Name = "on-demand"
+      Name = "base"
     }
   }
 }
 
-resource "aws_autoscaling_group" "on_demand" {
-  name = var.asg_name
-  capacity_rebalance  = true
-  desired_capacity    = var.desired_capacity
-  max_size            = var.max_size
-  min_size            = var.min_size
-  vpc_zone_identifier = data.aws_subnets.default.ids
-  health_check_grace_period = 180
-  launch_template {
-    id      = aws_launch_template.on_demand.id
-    version = aws_launch_template.on_demand.latest_version
-  }
-}
+
 
 
 resource "aws_iam_role" "instance" {

@@ -1,14 +1,11 @@
-// Set-up main info
-region = "eu-west-1"
-# ami_id = "ami-0bf84c42e04519c85"
+region  = "eu-west-1"
 profile = "personal"
 
-// Set-up Auto Scaling Group
-asg_name = "on-demand"
-desired_capacity = 0
-min_size = 0
-max_size = 32
+on_demand_desired_capacity = 0
+on_demand_instance_type    = "t3.micro"
 
+spot_desired_capacity = 2
+spot_instance_types   = ["t3.micro", "t3a.micro"]
+spot_max_price        = "0.004"
 
-// Set-up launch configuration
-lc_name = "on-demand"
+user_data_filename = "user_data_ddoser.sh"
