@@ -11,7 +11,7 @@
    - Enter the verification code received
    - Choose the Basic support plan
    - Click "Go to the AWS Management Console" button
-1. Create IAM user with Administrator privileges
+1. Open [IAM service](https://go.aws/3waNFzA) in the AWS console and create IAM user with Administrator privileges
 <img width="1746" alt="image" src="https://user-images.githubusercontent.com/48525503/156642487-c95b4cb2-b943-4519-9aa7-d74b06297671.png">
 <img width="1050" alt="image" src="https://user-images.githubusercontent.com/48525503/156642653-de50ede1-77df-4acf-80e2-5eedb3f81f61.png">
 <img width="1025" alt="image" src="https://user-images.githubusercontent.com/48525503/156642812-943fe72b-20ba-4d7b-abf2-320a8705ee5a.png">
