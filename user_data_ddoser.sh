@@ -9,6 +9,7 @@ sudo snap start amazon-ssm-agent
 # R=$(($(($RANDOM%$DIFF))+$MIN_TIME))
 # sudo shutdown +$R
 sudo yum install -y python3-pip git htop
+sudo apt update
 sudo apt install -y python3-pip python3-venv git htop
 ulimit -n 100000
 git clone https://github.com/taransergey/ddoser.git
