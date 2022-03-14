@@ -29,4 +29,5 @@ python3 ./ddoser.py \
 --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36' \
 --with-random-get-param \
 --restart-period 600 \
---log-to-stdout
+--log-to-stdout \
+--stop-attack 500
