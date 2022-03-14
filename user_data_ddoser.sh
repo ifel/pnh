@@ -29,5 +29,4 @@ nohup python3 ./ddoser.py \
 --with-random-get-param \
 --restart-period 600 \
 --log-to-stdout \
---log-to-stdout \
 >ddoser.stdout 2>ddoser.stderr &
