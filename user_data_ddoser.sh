@@ -30,4 +30,5 @@ python3 ./ddoser.py \
 --with-random-get-param \
 --restart-period 600 \
 --log-to-stdout \
---stop-attack 500
+--stop-attack 500 \
+-vv
