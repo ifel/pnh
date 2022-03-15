@@ -32,4 +32,5 @@ python3 ./ddoser.py \
 --log-to-stdout \
 --stop-attack 240 \
 --stop-attack-on-forbidden \
+--reset-errors-on-success \
 -vv
