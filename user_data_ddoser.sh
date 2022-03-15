@@ -31,4 +31,5 @@ python3 ./ddoser.py \
 --restart-period 600 \
 --log-to-stdout \
 --stop-attack 500 \
+--stop-attack-on-forbidden \
 -vv
