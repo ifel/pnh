@@ -18,7 +18,6 @@ python3 -m venv venv
 source venv/bin/activate
 pip3 install -r requirements.txt
 python3 ./ddoser.py \
---proxy-url 'http://143.244.166.15/proxy.list' \
 --target-urls-file 'https://raw.githubusercontent.com/hem017/cytro/master/targets_all.txt' \
 --target-urls-file 'https://github.com/hem017/cytro/raw/master/special_targets.txt' \
 --random-xff-ip \
