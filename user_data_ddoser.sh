@@ -19,7 +19,7 @@ source venv/bin/activate
 pip3 install -r requirements.txt
 python3 ./ddoser.py \
 --target-urls-file 'https://raw.githubusercontent.com/hem017/cytro/master/targets_all.txt' \
---target-urls-file 'https://github.com/hem017/cytro/raw/master/special_targets.txt' \
+--target-urls-file 'https://raw.githubusercontent.com/hem017/cytro/master/special_targets.txt' \
 --random-xff-ip \
 --shuffle-proxy \
 --concurrency 150 \
